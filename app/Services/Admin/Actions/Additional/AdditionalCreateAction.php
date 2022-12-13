@@ -23,11 +23,8 @@ class AdditionalCreateAction implements AdditionalCreateContract
         DB::transaction(function () use( $dto)
         {
             $this->createAdditional($dto);
-
-
         });
     }
-
     private function createAdditional(AdditionalCreateDto $dto):Model {
 
         return  $this->repository->create($dto->toArray());

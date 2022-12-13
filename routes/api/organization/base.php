@@ -11,6 +11,7 @@ Route::group(['prefix' => 'organization'], function () {
     });
     Route::group(['prefix' => 'user', 'middleware' => ['auth:sanctum', 'role:partner']], function () {
         include('user/profile.php');
+        include('user/news.php');
         Route::post('logout', [LogoutController::class, 'logout']);
     });
 });

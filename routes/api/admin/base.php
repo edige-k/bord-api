@@ -17,6 +17,9 @@ Route::group(['prefix' => 'admin'], function(){
         include('kitchen/kitchen.php');
         include('kind/kind.php');
         include('additional/additional.php');
+        include('newsconfirm/newsconfirm.php');
+        include('banner/banner.php');
+
 
         Route::post('logout', [LogoutController::class, 'logout']);
     });

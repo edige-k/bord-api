@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\File;
 use App\Models\User;
+use App\Observers\FileObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -30,5 +32,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         User::observe(UserObserver::class);
+        File::observe(FileObserver::class);
     }
 }

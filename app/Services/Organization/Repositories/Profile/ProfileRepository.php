@@ -4,6 +4,7 @@
 namespace App\Services\Organization\Repositories\Profile;
 
 
+use App\Models\Kitchen;
 use App\Models\Organization;
 use App\Repositories\BaseRepository;
 

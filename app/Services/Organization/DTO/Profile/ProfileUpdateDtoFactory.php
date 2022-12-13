@@ -22,8 +22,10 @@ class ProfileUpdateDtoFactory
             'instagram'=>$data['instagram'],
             'kitchen_id'=>$data['kitchen_id'],
             'kind_id'=>$data['kind_id'],
-            'additional_id'=>$data['additional_id']
-
+            'additional_id'=>$data['additional_id'],
+            'dates'=>$data['dates'],
+            'image' => $data['image'],
+            'file' => $data['file'],
         ]);
     }
 }

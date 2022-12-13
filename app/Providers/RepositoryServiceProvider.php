@@ -14,6 +14,8 @@ use App\Services\Admin\Repositories\Kitchen\KitchenRepository;
 use App\Services\Admin\Repositories\Kitchen\KitchenRepositoryInterface;
 use App\Services\Admin\Repositories\PartnerRepository;
 use App\Services\Admin\Repositories\PartnerRepositoryInterface;
+use App\Services\Organization\Repositories\News\NewsRepository;
+use App\Services\Organization\Repositories\News\NewsRepositoryInterface;
 use App\Services\Organization\Repositories\Profile\ProfileRepository;
 use App\Services\Organization\Repositories\Profile\ProfileRepositoryInterface;
 use Faker\Provider\Base;
@@ -33,7 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
         KitchenRepositoryInterface::class=>KitchenRepository::class,
         KindRepositoryInterface::class=>KindRepository::class,
         AdditionalRepositoryInterface::class=>AdditionalRepository::class,
-        ProfileRepositoryInterface::class=>ProfileRepository::class
+        ProfileRepositoryInterface::class=>ProfileRepository::class,
     ];
     public function register()
     {

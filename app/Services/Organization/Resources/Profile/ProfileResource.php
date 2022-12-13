@@ -23,6 +23,12 @@ class ProfileResource extends JsonResource
             'average_check'=>$this->average_check,
             'link'=>$this->link,
             'instagram'=>$this->instagram,
+            'kitchens'=>$this->kitchens,
+            'kinds'=>$this->kinds,
+            'additionals'=>$this->additionals,
+            'dates'=>$this->dates,
+            'files'=>$this->files,
+
         ];
     }
 }

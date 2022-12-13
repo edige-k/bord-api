@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Organization\Requests\Kitchen;
+namespace App\Services\clients\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class KitchenSelectRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,6 @@ class KitchenSelectRequest extends FormRequest
     public function authorize()
     {
         return auth()->check();
-
     }
 
     /**
@@ -25,7 +24,7 @@ class KitchenSelectRequest extends FormRequest
     public function rules()
     {
         return [
-            'kitchen_id' => ['required','unique:kitchen_organization,kitchen_id'],
+            //
         ];
     }
 }

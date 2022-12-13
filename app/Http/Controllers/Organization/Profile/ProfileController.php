@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     public function index(){
-        /** @var User $partner */
+/** @var User $partner */
         $partner = Auth::user();
         return new ProfileResource($partner->organization);
     }
@@ -34,5 +34,6 @@ class ProfileController extends Controller
             $organization,ProfileUpdateDtoFactory::fromRequest($request));
         return response()->json("Updated Organization");
     }
+
 
 }

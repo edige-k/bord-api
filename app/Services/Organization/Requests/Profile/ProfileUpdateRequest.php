@@ -31,9 +31,16 @@ class ProfileUpdateRequest extends FormRequest
             'average_check'=>['required', 'int'],
             'link'=>['required', 'string'],
             'instagram'=>['required', 'string'],
-            'kitchen_id' => ['required','unique:kitchen_organization,kitchen_id'],
-            'kind_id' => ['required','unique:kind_organization,kind_id'],
-            'additional_id' => ['required','unique:additional_organization,additional_id'],
+            'kitchen_id' => ['required'],
+            'kind_id' => ['required'],
+            'additional_id' => ['required'],
+            'dates' => ['required','array'],
+            'dates.*.week' => ['required', 'string','exists:dates'],
+            'dates.*.from'=>['required', 'string','max:255'],
+            'dates.*.end'=>['required', 'string','max:255'],
+            'image' => ['required', 'array'],
+            'image.*.mime'=>['mimes:jpeg,png,jpg,gif,svg'],
+            "file" => "required|mimes:pdf,doc,docx|max:10000"
         ];
     }
 }

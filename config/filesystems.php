@@ -27,7 +27,11 @@ return [
     */
 
     'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+    'storage' => [
+        'organization' => 'public/organizations',
+        'banner' => 'public/admin/banners'
 
+    ],
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
