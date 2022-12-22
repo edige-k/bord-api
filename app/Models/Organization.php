@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasMedia;
+use App\Traits\HasScopes;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  */
 class Organization extends Model
 {
-    use HasFactory, HasMedia;
+    use HasFactory, HasMedia,HasScopes;
 
     protected $fillable = [
         'partner_id',
@@ -28,7 +29,15 @@ class Organization extends Model
         'link',
         'instagram',
     ];
-
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at'
+    ];
+    protected $hidden=[
+        'created_at',
+        'updated_at'
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -37,12 +46,11 @@ class Organization extends Model
     {
         return $this->belongsTo(City::class);
     }
-
-
     public function kitchens()
     {
         return $this->belongsToMany(Kitchen::class);
     }
+
     public function kinds()
     {
         return $this->belongsToMany(Kind::class);
@@ -56,6 +64,7 @@ class Organization extends Model
     {
         return $this->hasMany(Date::class);
     }
+
     public function news():MorphOne
     {
         return $this->morphOne(News::class, 'newsable');

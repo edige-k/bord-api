@@ -48,4 +48,8 @@ class File extends Model
             ? asset(Storage::url($this->url))
             : Storage::cloud()->url($this->url);
     }
+    protected $hidden=[
+        'created_at',
+        'updated_at'
+    ];
 }

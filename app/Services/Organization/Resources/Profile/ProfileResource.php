@@ -28,6 +28,7 @@ class ProfileResource extends JsonResource
             'additionals'=>$this->additionals,
             'dates'=>$this->dates,
             'files'=>$this->files,
+            'news'=>$this->news
 
         ];
     }

@@ -4,57 +4,185 @@
 namespace App\Repositories;
 
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseRepository implements EloquentRepositoryInterface
-
 {
     protected Model $model;
 
-
-    public function getAll(array $columns = ['*'], array $relations = [], array $relations_count = []): Collection
+    /**
+     * @param array $columns
+     * @param array $relations
+     * @param array $relations_count
+     * @return Collection
+     */
+    public function getAll(
+        array $columns = ['*'],
+        array $relations = [],
+        array $relations_count = []
+    ): Collection
     {
-        // TODO: Implement getAll() method.
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->with($relations)
+            ->withCount($relations_count)
+            ->latest('id')
+            ->get();
     }
 
-    public function getAllQuery(array $columns = ['*'], array $relations = [], array $relations_count = []): Builder
+    /**
+     * @param array|string[] $columns
+     * @param array $relations
+     * @param array $relations_count
+     * @return Builder
+     */
+    public function getAllQuery(
+        array $columns = ['*'],
+        array $relations = [],
+        array $relations_count = []
+    ): Builder
     {
-        // TODO: Implement getAllQuery() method.
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->with($relations)
+            ->withCount($relations_count);
     }
 
-    public function getByCustomFiltersQuery(array $filters, array $columns = ['*'], array $relations = [], array $relations_count = []): Builder
+    /**
+     * @param array $filters
+     * @param array $columns
+     * @param array $relations
+     * @param array $relations_count
+     * @return Builder
+     */
+    public function getByCustomFiltersQuery(
+        array $filters,
+        array $columns = ['*'],
+        array $relations = [],
+        array $relations_count = []
+    ): Builder
     {
-        // TODO: Implement getByCustomFiltersQuery() method.
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->with($relations)
+            ->withCount($relations_count)
+            ->latest('id')
+            ->filterBy($filters);
     }
 
-    public function getByCustomFilters(array $filters, array $columns = ['*'], array $relations = [], array $relations_count = []): Collection
+    /**
+     * @param string $value
+     * @param string|null $key
+     * @return array
+     */
+    public function getList(
+        string $value,
+        ?string $key,
+    ): array
     {
-        // TODO: Implement getByCustomFilters() method.
+        return $this->model
+            ->query()
+            ->pluck($value, $key)
+            ->toArray();
     }
 
-    public function getList(string $value, ?string $key): array
+    /**
+     * @param array $filters
+     * @param array $columns
+     * @param array $relations
+     * @param array $relations_count
+     * @return Collection
+     */
+    public function getByCustomFilters(
+        array $filters,
+        array $columns = ['*'],
+        array $relations = [],
+        array $relations_count = []
+    ): Collection
     {
-        // TODO: Implement getList() method.
+        return $this->getByCustomFiltersQuery($filters, $columns, $relations, $relations_count)->get();
     }
 
-    public function find(string $modelId, array $columns = ['*'], array $relations = [], array $relations_count = []): ?Model
-    {
-        // TODO: Implement find() method.
+    /**
+     * Find by id.
+     *
+     * @param string $modelId
+     * @param array $columns
+     * @param array $relations
+     * @param array $relations_count
+     * @return Model|null
+     */
+    public function find(
+        string $modelId,
+        array $columns = ['*'],
+        array $relations = [],
+        array $relations_count = []
+    ): ?Model {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->with($relations)
+            ->withCount($relations_count)
+            ->find($modelId);
     }
 
-    public function findOrFail(string $modelId, array $columns = ['*'], array $relations = [], array $relations_count = []): ?Model
-    {
-        // TODO: Implement findOrFail() method.
+    /**
+     * Find or fail by id.
+     *
+     * @param string $modelId
+     * @param array $columns
+     * @param array $relations
+     * @param array $relations_count
+     * @return Model|null
+     */
+    public function findOrFail(
+        string $modelId,
+        array $columns = ['*'],
+        array $relations = [],
+        array $relations_count = []
+    ): ?Model {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->with($relations)
+            ->withCount($relations_count)
+            ->findOrFail($modelId);
     }
 
-    public function firstWhere(array $condition, array $columns = ['*'], array $relations = [], array $relations_count = []): ?Model
-    {
-        // TODO: Implement firstWhere() method.
+    /**
+     * First where.
+     *
+     * @param array $condition
+     * @param array $columns
+     * @param array $relations
+     * @param array $relations_count
+     * @return Model|null
+     */
+    public function firstWhere(
+        array $condition,
+        array $columns = ['*'],
+        array $relations = [],
+        array $relations_count = []
+    ): ?Model {
+        return $this->model
+            ->query()
+            ->select($columns)
+            ->with($relations)
+            ->withCount($relations_count)
+            ->firstWhere($condition);
     }
 
+    /**
+     * Create a model.
+     *
+     * @param array $payload
+     * @return Model
+     */
     public function create(array $payload): Model
     {
         return $this->model
@@ -62,23 +190,61 @@ abstract class BaseRepository implements EloquentRepositoryInterface
             ->create($payload);
     }
 
-    public function update(string $modelId, array $payload): int
+    /**
+     * Update a model by ID.
+     *
+     * @param string $modelId
+     * @param array $payload
+     * @return int
+     */
+    public function update(
+        string $modelId,
+        array $payload
+    ): int
     {
-        // TODO: Implement update() method.
+        return $this->model
+            ->query()
+            ->where('id', $modelId)
+            ->update($payload);
     }
 
+    /**
+     * @param $values
+     * @return bool
+     */
     public function insert($values): bool
     {
-        // TODO: Implement insert() method.
+        return $this->model
+            ->query()
+            ->insert($values);
     }
 
-    public function upsert($values, $uniqueBy, $update = null): int
+    /**
+     * Update any model.
+     *
+     * @param $values
+     * @param $uniqueBy
+     * @param null $update
+     * @return int
+     */
+    public function upsert(
+        $values,
+        $uniqueBy,
+        $update = null
+    ): int
     {
-        // TODO: Implement upsert() method.
+        return $this->model
+            ->query()
+            ->upsert($values, $uniqueBy, $update);
     }
 
+    /**
+     * @return int
+     */
     public function count(): int
     {
-        // TODO: Implement count() method.
+        return $this->model
+            ->query()
+            ->count();
     }
 }

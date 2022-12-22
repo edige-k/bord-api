@@ -13,7 +13,8 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check();
+        return auth()->guest();
+
     }
 
     /**
@@ -24,7 +25,12 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'phone' => ['required','string','min:8','max:11', 'unique:clients'],
+            'name'=>['required', 'string','max:50'],
+            'lastname'=>['required', 'string','max:50'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
+            'male'=>['required', 'string'],
+            'friend_code'=>['nullable','string','size:6'],
         ];
     }
 }

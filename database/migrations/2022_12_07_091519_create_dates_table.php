@@ -17,8 +17,8 @@ class CreateDatesTable extends Migration
             $table->id();
             $table->foreignId('organization_id')->constrained();
             $table->string('week');
-            $table->string('from');
-            $table->string('end');
+            $table->time('from');
+            $table->time('end');
             $table->timestamps();
         });
     }

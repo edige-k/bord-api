@@ -55,7 +55,6 @@ class ProfileCreateAction implements ProfileCreateContract
     }
     private function selecetAdditional($organization,ProfileCreateDto $dto) {
         $organization->additionals()->attach($dto->additional_id);
-
     }
     private function createDates($organization,ProfileCreateDto $dto) {
         $organization->dates()->createMany($dto->dates);

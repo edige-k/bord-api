@@ -11,6 +11,8 @@ Route::group(['prefix' => ''], function(){
     Route::group(['prefix' => 'client', 'middleware' => ['auth:sanctum', 'role:client']], function()
     {
         include('user/account.php');
+        include('user/mainpage.php');
+
         Route::post('logout', [LogoutController::class, 'logout']);
     });
 });

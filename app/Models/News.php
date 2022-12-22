@@ -25,4 +25,8 @@ class News extends Model
     {
         return $this->morphTo();
     }
+    protected $hidden=[
+        'created_at',
+        'updated_at'
+    ];
 }

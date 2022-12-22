@@ -25,7 +25,6 @@ class PartnerCreateAction implements createPartnerContract
         {
             $user = $this->createPartner($partnerCreateDto);
                 $user->assignRole(RoleEnum::PARTNER);
-
         });
     }
     private function createPartner(PartnerCreateDto $partnerCreateDto):Model {

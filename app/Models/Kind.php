@@ -15,4 +15,8 @@ class Kind extends Model
     {
         return $this->belongsToMany(Organization::class);
     }
+    protected $hidden=[
+        'created_at',
+        'updated_at'
+    ];
 }

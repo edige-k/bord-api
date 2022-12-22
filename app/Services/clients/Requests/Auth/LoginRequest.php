@@ -13,7 +13,8 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check();
+        return auth()->guest();
+
     }
 
     /**
@@ -24,7 +25,8 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'phone' => ['required','string','min:8','max:11'],
+
         ];
     }
 }

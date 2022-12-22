@@ -31,7 +31,15 @@ use App\Services\Admin\Contracts\Admin\kitchen\KitchenUpdateContract;
 use App\Services\Admin\Contracts\Admin\NewsConfirmContract\NewsConfirmContract;
 use App\Services\Admin\Contracts\Admin\Partner\createPartnerContract;
 use App\Services\Admin\Contracts\Admin\Partner\updatePartnerContract;
-use App\Services\Admin\Contracts\LoginContract;
+use App\Services\clients\Action\Auth\ConfirmCodeAction;
+use App\Services\clients\Action\Auth\LoginAction;
+use App\Services\clients\Action\Auth\RegisterAction;
+use App\Services\clients\Action\getAllAction\GetBannerAction;
+use App\Services\clients\Action\RestautantOpen\RestaurantOpenAction;
+use App\Services\clients\Contracts\Auth\ConfirmCodeContract;
+use App\Services\clients\Contracts\Auth\RegisterContract;
+use App\Services\clients\Contracts\GetAllContract\GetBannerContract;
+use App\Services\clients\Contracts\restaurant\RestaurantOpenContract;
 use App\Services\Organization\Actions\News\NewsCreateAction;
 use App\Services\Organization\Actions\News\NewsUpdateAction;
 use App\Services\Organization\Actions\Profile\ProfileCreateAction;
@@ -43,7 +51,7 @@ use App\Services\Organization\Contracts\Profile\ProfileCreateContract;
 use App\Services\Organization\Contracts\Profile\ProfileUpdateContract;
 use App\Services\Organization\Requests\News\NewsDestroyAction;
 use Illuminate\Support\ServiceProvider;
-
+use App\Services\clients\Contracts\Auth\LoginContract;
 class ActionServiceProvider extends ServiceProvider
 {
     /**
@@ -73,8 +81,11 @@ class ActionServiceProvider extends ServiceProvider
         BannerCreateContract::class=>BannerCreateAction::class,
         BannerUpdateContract::class=>BannerUpdateAction::class,
         BannerDeleteContract::class=>BannerDeleteAction::class,
-
-
+        LoginContract::class=>LoginAction::class,
+        RegisterContract::class=>RegisterAction::class,
+        ConfirmCodeContract::class=>ConfirmCodeAction::class,
+        GetBannerContract::class=>GetBannerAction::class,
+        RestaurantOpenContract::class=>RestaurantOpenAction::class,
     ];
     public function register()
     {

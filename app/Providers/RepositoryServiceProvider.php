@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Repositories\Banner\BannerRepository;
+use App\Repositories\Banner\BannerRepositoryInterface;
 use App\Repositories\BaseRepository;
 use App\Repositories\EloquentRepositoryInterface;
+use App\Repositories\restaurant\RestaurantRepository;
+use App\Repositories\restaurant\RestaurantRepositoryInterface;
 use App\Services\Admin\Repositories\Additional\AdditionalRepository;
 use App\Services\Admin\Repositories\Additional\AdditionalRepositoryInterface;
 use App\Services\Admin\Repositories\City\CityRepository;
@@ -14,8 +18,6 @@ use App\Services\Admin\Repositories\Kitchen\KitchenRepository;
 use App\Services\Admin\Repositories\Kitchen\KitchenRepositoryInterface;
 use App\Services\Admin\Repositories\PartnerRepository;
 use App\Services\Admin\Repositories\PartnerRepositoryInterface;
-use App\Services\Organization\Repositories\News\NewsRepository;
-use App\Services\Organization\Repositories\News\NewsRepositoryInterface;
 use App\Services\Organization\Repositories\Profile\ProfileRepository;
 use App\Services\Organization\Repositories\Profile\ProfileRepositoryInterface;
 use Faker\Provider\Base;
@@ -36,6 +38,8 @@ class RepositoryServiceProvider extends ServiceProvider
         KindRepositoryInterface::class=>KindRepository::class,
         AdditionalRepositoryInterface::class=>AdditionalRepository::class,
         ProfileRepositoryInterface::class=>ProfileRepository::class,
+        BannerRepositoryInterface::class=>BannerRepository::class,
+        RestaurantRepositoryInterface::class=>RestaurantRepository::class,
     ];
     public function register()
     {

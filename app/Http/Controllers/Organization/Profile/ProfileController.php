@@ -22,7 +22,6 @@ class ProfileController extends Controller
         $partner = Auth::user();
         return new ProfileResource($partner->organization);
     }
-
     public function store(ProfileCreateRequest $request){
         app(ProfileCreateContract::class)->execute
         (ProfileCreateDtoFactory::fromRequest($request));
