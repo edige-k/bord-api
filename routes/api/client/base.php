@@ -12,7 +12,8 @@ Route::group(['prefix' => ''], function(){
     {
         include('user/account.php');
         include('user/mainpage.php');
-
+        include('user/restaurant_page.php');
+        include('user/news.php');
         Route::post('logout', [LogoutController::class, 'logout']);
     });
 });

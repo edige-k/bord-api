@@ -20,7 +20,6 @@ class KindCreateAction implements KindCreateContract
     }
     public function execute(KindCreateDto $dto): void
     {
-        // TODO: Implement execute() method.
         DB::transaction(function () use( $dto)
         {
             $this->createKind($dto);

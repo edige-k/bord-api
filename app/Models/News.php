@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Traits\HasMedia;
+use App\Traits\HasScopes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class News extends Model
 {
-    use HasFactory, HasMedia;
+    use HasFactory, HasMedia,HasScopes;
     protected $fillable = [
         'title',
         'content',
@@ -20,7 +21,6 @@ class News extends Model
         'newsable_id',
         'newsable_type',
     ];
-    protected $table = 'news';
     public function newsable(): MorphTo
     {
         return $this->morphTo();
@@ -29,4 +29,6 @@ class News extends Model
         'created_at',
         'updated_at'
     ];
+
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasComments;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -13,7 +14,7 @@ use Spatie\Permission\Traits\HasRoles;
 class Client extends  Authenticatable
 {
 
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles,HasComments;
     protected $fillable=[
         'phone',
         'name',

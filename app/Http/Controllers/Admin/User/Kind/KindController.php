@@ -15,7 +15,6 @@ class KindController extends Controller
     public function index(){
         return KindResource::collection(Kind::all());
     }
-
     public function store(KindRequest $request){
         app(KindCreateAction::class)->execute
         (KindCreateDtoFactory::fromRequest($request));

@@ -17,6 +17,8 @@ class CreateKindOrganizationTable extends Migration
             $table->id();
             $table->foreignId('kind_id')->constrained();
             $table->foreignId('organization_id')->constrained();
+            $table->unsignedBigInteger('position')->nullable()->index()->comment('Позиция');
+
 
         });
     }

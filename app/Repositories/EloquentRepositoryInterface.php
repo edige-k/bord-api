@@ -87,7 +87,6 @@ interface EloquentRepositoryInterface
         array $relations = [],
         array $relations_count = []
     ): ?Model;
-
     /**
      * Find Or Fail.
      *
@@ -97,6 +96,7 @@ interface EloquentRepositoryInterface
      * @param array $relations_count
      * @return Model|null
      */
+
     public function findOrFail(
         string $modelId,
         array $columns = ['*'],

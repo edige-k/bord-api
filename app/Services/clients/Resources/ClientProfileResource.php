@@ -25,6 +25,5 @@ class ClientProfileResource extends JsonResource
 //            'clientsconfirm'=>$this->clientsconfirm,
             'roles'=>$this->roles,
             ];
-
     }
 }

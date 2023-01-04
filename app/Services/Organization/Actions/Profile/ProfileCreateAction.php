@@ -41,11 +41,9 @@ class ProfileCreateAction implements ProfileCreateContract
     }
 
     private function createProfile(ProfileCreateDto $dto):Model {
-
         return  $this->repository->create($dto->toArray());
     }
     private function selecetKitchen($organization,ProfileCreateDto $dto) {
-
         $organization->kitchens()->attach($dto->kitchen_id);
     }
 

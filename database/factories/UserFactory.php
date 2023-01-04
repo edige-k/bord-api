@@ -41,7 +41,6 @@ class UserFactory extends Factory
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-
                 'email_verified_at' => now()->toDateTimeString(),
                 'ACTIVED_AT' => now()->toDateTimeString(),
             ];
@@ -57,7 +56,6 @@ class UserFactory extends Factory
                 'name' => 'Разработчик',
                 'email' => 'developer@gmail.com',
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-
                 'email_verified_at' => now()->toDateTimeString(),
                 'ACTIVED_AT' => now()->toDateTimeString(),
 

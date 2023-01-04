@@ -15,6 +15,7 @@ class ClientProfileController extends Controller
         /** @var Client $client */
         $client = Auth::user();
 //        dd($client);
+
         return new ClientProfileResource($client);
     }
 }

@@ -12,6 +12,7 @@ use App\Services\Organization\DTO\News\NewsUpdateDtoFactory;
 use App\Services\Organization\Requests\News\NewsCreateRequest;
 use App\Services\Organization\Requests\News\NewsUpdateRequest;
 use App\Services\Organization\Resources\News\NewsResource;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -26,9 +27,8 @@ class NewsController extends Controller
     }
 
     public function update(News $news,NewsUpdateRequest $request){
-        app(NewsUpdateContract::class)->execute
+        return app(NewsUpdateContract::class)->execute
         ( $news,NewsUpdateDtoFactory::fromRequest($request));
-        return response()->json("Updated news");
     }
     public function destroy(News $news){
         app(NewsDestroyContract::class)->execute(

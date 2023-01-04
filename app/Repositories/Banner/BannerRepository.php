@@ -6,15 +6,13 @@ namespace App\Repositories\Banner;
 
 use App\Models\Banner;
 use App\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
+
 
 class BannerRepository  implements BannerRepositoryInterface
 {
-//    public function __construct(Banner $banner)
-//    {
-//        $this->model = $banner;
-//    }
-    public function getAllBanners()
+    public function getAllBanners():Collection
     {
-        return Banner::all()->sortBy('position');
+        return Banner::query()->with('file:files.id,fileable_id,fileable_type,name,url')->get();
     }
 }

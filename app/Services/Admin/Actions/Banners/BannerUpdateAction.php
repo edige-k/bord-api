@@ -24,7 +24,7 @@ class BannerUpdateAction implements BannerUpdateContract
 
 
     private function UpdateBanner(Banner $banner,BannerDto $dto) {
-        return $banner->update($dto->toArray());
+        return $banner->query()->update($dto->toArray());
     }
 
     private function uploadMedia($banner,BannerDto $dto):void    {

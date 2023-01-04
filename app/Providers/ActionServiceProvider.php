@@ -34,12 +34,30 @@ use App\Services\Admin\Contracts\Admin\Partner\updatePartnerContract;
 use App\Services\clients\Action\Auth\ConfirmCodeAction;
 use App\Services\clients\Action\Auth\LoginAction;
 use App\Services\clients\Action\Auth\RegisterAction;
-use App\Services\clients\Action\getAllAction\GetBannerAction;
-use App\Services\clients\Action\RestautantOpen\RestaurantOpenAction;
+use App\Services\clients\Action\banner\GetBannerAction;
+use App\Services\clients\Action\Restautant\Comment\CommentUpdateAction;
+use App\Services\clients\Action\Restautant\Comment\RestaurantCommentAction;
+use App\Services\clients\Action\Restautant\Karaoke\RestaurantKaraokeAction;
+use App\Services\clients\Action\Restautant\loungeBar\RestaurantLoungeBarAction;
+use App\Services\clients\Action\Restautant\Main\RestaurantMainGetAction;
+use App\Services\clients\Action\Restautant\MainPage\RestaurantPageAction;
+use App\Services\clients\Action\Restautant\News\RestaurantNewsGetAction;
+use App\Services\clients\Action\Restautant\News\RestaurantNewsGetIdAction;
+use App\Services\clients\Action\Restautant\Open\RestaurantOpenAction;
+use App\Services\clients\Action\Restautant\Popular\RestaurantPopularAction;
 use App\Services\clients\Contracts\Auth\ConfirmCodeContract;
 use App\Services\clients\Contracts\Auth\RegisterContract;
-use App\Services\clients\Contracts\GetAllContract\GetBannerContract;
-use App\Services\clients\Contracts\restaurant\RestaurantOpenContract;
+use App\Services\clients\Contracts\Banner\GetBannerContract;
+use App\Services\clients\Contracts\restaurant\Comment\CommentContract;
+use App\Services\clients\Contracts\restaurant\Comment\CommentUpdateContract;
+use App\Services\clients\Contracts\restaurant\Karaoke\RestaurantKaraokeContract;
+use App\Services\clients\Contracts\restaurant\LoungeBar\RestaurantLoungeBarContract;
+use App\Services\clients\Contracts\restaurant\Main\RestaurantMainGetContract;
+use App\Services\clients\Contracts\restaurant\MainPage\RestaurantPageContract;
+use App\Services\clients\Contracts\restaurant\News\RestaurantNewsContract;
+use App\Services\clients\Contracts\restaurant\News\RestaurantNewsIdContract;
+use App\Services\clients\Contracts\restaurant\Open\RestaurantOpenContract;
+use App\Services\clients\Contracts\restaurant\Popular\RestaurantPopularContract;
 use App\Services\Organization\Actions\News\NewsCreateAction;
 use App\Services\Organization\Actions\News\NewsUpdateAction;
 use App\Services\Organization\Actions\Profile\ProfileCreateAction;
@@ -86,6 +104,14 @@ class ActionServiceProvider extends ServiceProvider
         ConfirmCodeContract::class=>ConfirmCodeAction::class,
         GetBannerContract::class=>GetBannerAction::class,
         RestaurantOpenContract::class=>RestaurantOpenAction::class,
+        CommentContract::class=>RestaurantCommentAction::class,
+        CommentUpdateContract::class=>CommentUpdateAction::class,
+        RestaurantPageContract::class=>RestaurantPageAction::class,
+        RestaurantPopularContract::class=>RestaurantPopularAction::class,
+        RestaurantLoungeBarContract::class=>RestaurantLoungeBarAction::class,
+       RestaurantMainGetContract::class=>RestaurantMainGetAction::class,
+        RestaurantNewsContract::class=>RestaurantNewsGetAction::class,
+        RestaurantNewsIdContract::class=>RestaurantNewsGetIdAction::class,
     ];
     public function register()
     {

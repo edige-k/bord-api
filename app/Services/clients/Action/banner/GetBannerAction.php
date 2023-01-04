@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Services\clients\Action\getAllAction;
+namespace App\Services\clients\Action\banner;
 
 
 use App\Repositories\Banner\BannerRepositoryInterface;
-use App\Services\clients\Contracts\GetAllContract\GetBannerContract;
-use Illuminate\Http\JsonResponse;
+use App\Services\clients\Contracts\Banner\GetBannerContract;
+use Illuminate\Database\Eloquent\Collection;
 
 
 class GetBannerAction implements GetBannerContract
@@ -17,11 +17,9 @@ class GetBannerAction implements GetBannerContract
     {
         $this->repository = $repository;
     }
-    public function execute():array
+    public function execute():Collection
     {
-        return [
-           $this->repository->getAllBanners()
-        ];
+        return $this->repository->getAllBanners();
     }
 
 }

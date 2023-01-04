@@ -9,6 +9,6 @@ use App\Services\Organization\DTO\News\NewsUpdateDto;
 
 interface NewsUpdateContract
 {
-    public function execute(News $news,NewsUpdateDto $dto ): void;
+    public function execute(News $news,NewsUpdateDto $dto );
 
 }

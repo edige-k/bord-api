@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Services\clients\DTO\Comment\CommentDto;
 use App\Traits\HasMedia;
 use App\Traits\HasScopes;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-
+use App\Traits\HasComments;
 /**
  * Class Organization
  * @package App\Models
@@ -18,7 +20,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  */
 class Organization extends Model
 {
-    use HasFactory, HasMedia,HasScopes;
+    use HasFactory, HasMedia, HasScopes, HasComments;
 
     protected $fillable = [
         'partner_id',
@@ -34,18 +36,21 @@ class Organization extends Model
         'created_at',
         'updated_at'
     ];
-    protected $hidden=[
+    protected $hidden = [
         'created_at',
         'updated_at'
     ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
     public function city()
     {
         return $this->belongsTo(City::class);
     }
+
     public function kitchens()
     {
         return $this->belongsToMany(Kitchen::class);
@@ -55,6 +60,7 @@ class Organization extends Model
     {
         return $this->belongsToMany(Kind::class);
     }
+
     public function additionals()
     {
         return $this->belongsToMany(Additional::class);
@@ -65,8 +71,9 @@ class Organization extends Model
         return $this->hasMany(Date::class);
     }
 
-    public function news():MorphOne
+    public function news(): MorphMany
     {
-        return $this->morphOne(News::class, 'newsable');
+        return $this->morphMany(News::class, 'newsable');
     }
 }
+

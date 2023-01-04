@@ -15,6 +15,8 @@ class KindCreateDtoFactory
     {
         return new KindCreateDto([
             'name' => $data['name'],
+            'type'=> $data['type'],
+            'position'=> $data['position']
         ]);
 
     }
